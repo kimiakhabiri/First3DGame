@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask Ground;
     [SerializeField] private float MoveSpeed = 8f;
     [SerializeField] private float JumpForce = 7f;
+    [SerializeField] private AudioSource jumpSound;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -30,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         rb.velocity   = new Vector3(rb.velocity.x, JumpForce, rb.velocity.z);
+        jumpSound.Play();
     }
 
     private void OnCollisionEnter(Collision collision)
